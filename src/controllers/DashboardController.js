@@ -1,10 +1,9 @@
-const Spots = require('../models/Spot');
+const DashboardService = require('../services/DashboardService');
 
 module.exports = {
     async show(req , res){
         const {user_id}  = req.headers;
-        const spots = await Spots.find({ user : user_id});
-
+        const spots = await DashboardService.getSpotsById(user_id);
         return res.json(spots);
     }
 }
